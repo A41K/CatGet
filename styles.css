@@ -1,0 +1,331 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+}
+
+.bowl {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    background: url('bowl.png') center/contain no-repeat;
+    cursor: pointer;
+    transition: transform 0.2s;
+    z-index: 1000;
+}
+
+.treat-selector {
+    display: none;
+    position: fixed;
+    bottom: 120px;
+    right: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 1001;
+    width: 250px;
+}
+
+.inventory-container {
+    padding-bottom: 120px; /* Make space for fixed bowl */
+}
+
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bowl:hover {
+    transform: scale(1.1);
+}
+
+.treat {
+    padding: 10px 20px;
+    margin: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.treat:hover {
+    background: #e0e0e0;
+}
+
+.loading-screen {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 1002;  /* Higher than treat-selector */
+}
+
+.progress-bar {
+    width: 200px;
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: #4CAF50;
+    animation: progress 5s linear;
+}
+
+@keyframes progress {
+    to { width: 100%; }
+}
+
+.inventory-container {
+    margin-top: 50px;
+}
+
+.inventory {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 400px;
+    width: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cat-card svg {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.cat-name input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+    transition: border-color 0.3s ease;
+}
+
+.cat-name input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.cat-stats {
+    width: 100%;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.cat-stats div {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inventory {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.rarity-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#inventory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+#bowl {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#bowl:hover {
+    transform: scale(1.1);
+}
+
+#treatSelector {
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.treat {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.treat:hover {
+    transform: scale(1.05);
+}
+
+.cat-card img {
+    width: 100px;
+    height: 100px;
+}
+
+.cat-name {
+    margin-top: 10px;
+}
+
+
+/* Add these media queries at the end of the file */
+@media screen and (max-width: 768px) {
+    .game-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .bowl {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .treat-selector {
+        bottom: 90px;
+        right: 20px;
+        width: 200px;
+        padding: 15px;
+    }
+
+    .inventory {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .cat-card {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+        height: auto;
+        min-height: 380px;
+    }
+
+    .cat-card svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .cat-name input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .cat-stats {
+        padding: 10px;
+    }
+
+    .cat-stats div {
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .treat {
+        padding: 8px 15px;
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    .rarity-badge {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+}
+
+/* Add these styles */
+.sort-controls {
+    margin: 20px auto;
+    max-width: 200px;
+}
+
+.sort-select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+@media screen and (max-width: 768px) {
+    .sort-select {
+        font-size: 13px;
+        padding: 8px;
+    }
+}

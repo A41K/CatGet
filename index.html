@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Get!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="bowl" id="bowl"></div>
+        
+        <div class="treat-selector" id="treatSelector">
+            <div class="treat" data-treat="meat" data-bonus="strength">Meat (+Strength)</div>
+            <div class="treat" data-treat="bits" data-bonus="agility">Bits (+Agility)</div>
+            <div class="treat" data-treat="fish" data-bonus="intelligence">Fish (+Intelligence)</div>
+            <div class="treat" data-treat="sugar" data-bonus="charm">Sugar (+Charm)</div>
+            <div class="treat" data-treat="premium" data-bonus="premium">Premium (High rarity)</div>
+        </div>
+
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-text">Waiting for cat...</div>
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="inventory-container">
+            <h2>Cats Inventory</h2>
+            <!-- Add this after the inventory container heading -->
+            <div class="sort-controls">
+                <select id="sortBy" class="sort-select">
+                    <option value="newest">Newest First</option>
+                    <option value="rarity">By Rarity</option>
+                    <option value="strength">By Strength</option>
+                    <option value="agility">By Agility</option>
+                    <option value="intelligence">By Intelligence</option>
+                    <option value="charm">By Charm</option>
+                </select>
+            </div>
+            <div class="inventory" id="inventory"></div>
+        </div>
+    </div>
+    <script src="catTypes.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
