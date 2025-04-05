@@ -1,6 +1,6 @@
 class Cat {
     constructor(treatType) {
-        this.treatType = treatType;  // Add this line
+        this.treatType = treatType;
         this.id = Date.now();
         this.rarity = this.determineRarity();
         this.color = this.randomColor(this.rarity);
@@ -13,13 +13,13 @@ class Cat {
     }
 
     determineRarity() {
-        // Add special logic for premium bait
+       
         if (this.treatType === 'premium') {
             const rarities = ['divine', 'legendary', 'epic'];
             return rarities[Math.floor(Math.random() * rarities.length)];
         }
 
-        // Normal rarity determination
+ 
         const roll = Math.random() * 100;
         let sum = 0;
         for (const [rarity, chance] of Object.entries(CatTypes.rarityChances)) {
@@ -83,7 +83,7 @@ class Cat {
             bits: ['Playful', 'Quick reflexes', 'Acrobatic'],
             fish: ['Problem solver', 'Curious', 'Strategic'],
             sugar: ['Affectionate', 'Social butterfly', 'Charming'],
-            premium: ['Majestic', 'Royal', 'Mythical', 'Legendary', 'Divine']  // Add this line
+            premium: ['Majestic', 'Royal', 'Mythical', 'Legendary', 'Divine'] 
         };
 
         return behaviors[treatType]?.[Math.floor(Math.random() * (behaviors[treatType]?.length || 3))] || 'Unknown';
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
-                createCat(treatType, treatType); // 修改这里，传递 treatType 而不是 bonus
+                createCat(treatType, treatType); 
             }, Math.random() * 5000 + 5000);
         });
     });
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
 
-        // Add rarity indicator
+        
         const rarityColors = {
             divine: '#E0FFFF',    // Light cyan
             legendary: '#FFD700',  // Gold
@@ -349,12 +349,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Load saved cats on startup
-
-    // Modify the cats loading section - remove the old cats.forEach outside DOMContentLoaded
 
     function loadSavedCats() {
-        inventory.innerHTML = ''; // Clear existing inventory
+        inventory.innerHTML = ''; 
         cats.forEach(savedCat => {
             const catCard = document.createElement('div');
             catCard.className = 'cat-card';
@@ -402,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Make clearSavedCats globally accessible
+ 
     window.clearSavedCats = function() {
         localStorage.removeItem('cats');
         window.cats = [];
@@ -413,11 +410,9 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('All cats have been cleared');
     }
 
-    // You can now use this command in the browser console:
-    // clearSavedCats()
 });
 
-// Replace the old cats.forEach at the bottom with this
+
 loadSavedCats();
 
 const sortSelect = document.getElementById('sortBy');
