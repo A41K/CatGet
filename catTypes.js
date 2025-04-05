@@ -84,6 +84,3 @@ const CatTypes = {
         common: 'none'
     }
 };
-
-// Don't forget to add this line in your HTML file:
-// <script src="catTypes.js"></script>
